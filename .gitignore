@@ -1,0 +1,16 @@
+~*.*
+*.tmp
+/.gitignore 
+.vs/
+bin/
+obj/
+*.pdb
+*.suo
+*.user
+packages
+repositories.config
+*.dll
+*.exe
+*.dbmdl
+*.dacpac
+!Build/packages/
