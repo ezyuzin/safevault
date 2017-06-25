@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2BAE632A-E649-43BA-94B4-3C8CC66CECA9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SafeVault</RootNamespace>
+    <AssemblyName>SafeVault</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>sign.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="KeePass, Version=2.36.0.17315, Culture=neutral, PublicKeyToken=fed2ed7716aecf5c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\KeePass.exe</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Client\CipherName.cs" />
+    <Compile Include="Client\SafeVaultWebRequestCallback.cs" />
+    <Compile Include="Security\CipherCollection.cs" />
+    <Compile Include="Security\CompositeCipher.cs" />
+    <Compile Include="Security\ICipherCollection.cs" />
+    <Compile Include="Misc\Lazy.cs" />
+    <Compile Include="Client\SafeVaultWebRequest.cs" />
+    <Compile Include="Client\SafeVaultWebResponse.cs" />
+    <Compile Include="Configuration\ConfStorageAttribute.cs" />
+    <Compile Include="Configuration\ConfStorageType.cs" />
+    <Compile Include="Exceptions\SafeVaultConfException.cs" />
+    <Compile Include="Exceptions\SafeVaultSyncException.cs" />
+    <Compile Include="Resources\SafeVault.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SafeVault.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Security\AESEncrypt.cs" />
+    <Compile Include="Exceptions\SafeVaultException.cs" />
+    <Compile Include="Exceptions\SafeVaultHttpException.cs" />
+    <Compile Include="Exceptions\SafeVaultResponseException.cs" />
+    <Compile Include="Forms\VaultConnectionConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\VaultConnectionConfigForm.Designer.cs">
+      <DependentUpon>VaultConnectionConfigForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SafeVaultExt.cs" />
+    <Compile Include="Client\SafeVaultWebClient.cs" />
+    <Compile Include="Security\ICipher.cs" />
+    <Compile Include="Security\Random.cs" />
+    <Compile Include="Security\RSAEncrypt.cs" />
+    <Compile Include="Forms\VaultKeyCreateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\VaultKeyCreateForm.Designer.cs">
+      <DependentUpon>VaultKeyCreateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\VaultKeyPromptForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\VaultKeyPromptForm.Designer.cs">
+      <DependentUpon>VaultKeyPromptForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SafeVaultKeyProvider.cs" />
+    <Compile Include="Configuration\SafeVaultConf.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Configuration\AutoSyncMode.cs" />
+    <Compile Include="Misc\Async.cs" />
+    <Compile Include="SafeVaultSync.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\SafeVault.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SafeVault.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\VaultConnectionConfigForm.resx">
+      <DependentUpon>VaultConnectionConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\VaultKeyCreateForm.resx">
+      <DependentUpon>VaultKeyCreateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\VaultKeyPromptForm.resx">
+      <DependentUpon>VaultKeyPromptForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\B48x48_SafeVault.png" />
+    <None Include="sign.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
