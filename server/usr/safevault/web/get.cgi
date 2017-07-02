@@ -599,13 +599,19 @@ cmdUpload()
 		return;
 	fi
 	
-	if [ -f "$OTPBIN/client/$username/dbx/$uuid.dbx" ]; then
-		rm "$OTPBIN/client/$username/dbx/$uuid.dbx"
-	fi
 	mkdir -p "$OTPBIN/client/$username/dbx"
 	
-	cp "$OTPTMP/$uuid.dbx" "$OTPBIN/client/$username/dbx/$uuid.dbx"
-	rm "$OTPTMP/$uuid.dbx"
+	
+	if [ -f "$OTPBIN/client/$username/dbx/$uuid.dbx" ]; then
+		mkdir -p "$OTPBIN/client/$username/dbx/bak"
+		i=0
+		while [ -f "$OTPBIN/client/$username/dbx/bak/$uuid.$i.dbx" ]; do
+			i=`expr ${i} + 1`
+		done		
+		mv "$OTPBIN/client/$username/dbx/$uuid.dbx" "$OTPBIN/client/$username/dbx/bak/$uuid.$i.dbx"
+	fi
+	
+	mv "$OTPTMP/$uuid.dbx" "$OTPBIN/client/$username/dbx/$uuid.dbx"
 	echo "$lastModified" > "$OTPBIN/client/$username/dbx/$uuid.inf"
 	LogInfo "upload-dbx($uuid), username($username)"
 	
