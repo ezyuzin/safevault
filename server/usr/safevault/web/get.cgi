@@ -95,7 +95,9 @@ criticalFault() {
 	if [ "$faultName" == "Invalid-SyncPassword" ]; then 
 		points=2
 	fi	
-	
+	if [ "$faultName" == "Invalid-VaultKey" ]; then 
+		points=2
+	fi	
 	
 	local banlog="$OTPBIN/var/ban-log/$remoteIP.txt"
 	if [ -f "$banlog" ]; then
@@ -512,7 +514,8 @@ cmdGetQueryVaultKey()
 	local value=`/bin/get_key_value $vault $vaultkey`
 	if [ "$value" == "" ]; then 
 		LogError "get-vaultkey($vaultkey) not found for username($username)";
-		throw "400"
+		criticalFault "Invalid-VaultKey";
+		throw "200" "Invalid-VaultKey"
 		return
 	fi
 	
