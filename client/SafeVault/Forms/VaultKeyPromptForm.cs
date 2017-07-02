@@ -63,9 +63,27 @@ namespace SafeVault.Forms
 
         private void OnBtnOk(object sender, EventArgs e)
         {
-            this.DialogResult = _okButtonCallback.Invoke(tb_oneTimePassword.Text)
-                ? DialogResult.OK
-                : DialogResult.None;
+            if (string.IsNullOrEmpty(tb_oneTimePassword.Text))
+            {
+                DialogResult = DialogResult.None;
+            }
+            else
+            {
+                string oneTimePassword = tb_oneTimePassword.Text;
+                tb_oneTimePassword.PasswordChar = '•';
+                tb_oneTimePassword.Text = "".PadLeft(oneTimePassword.Length, '•');
+                tb_oneTimePassword.Enabled = false;
+                Application.DoEvents();
+
+                DialogResult = _okButtonCallback.Invoke(oneTimePassword)
+                    ? DialogResult.OK
+                    : DialogResult.None;
+
+                tb_oneTimePassword.Enabled = true;
+                tb_oneTimePassword.PasswordChar = '\0';
+                tb_oneTimePassword.Text = "";
+                ActiveControl = tb_oneTimePassword;
+            }
         }
     }
 }

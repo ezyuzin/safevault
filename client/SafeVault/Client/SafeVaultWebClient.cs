@@ -28,50 +28,22 @@ using SafeVault.Configuration;
 using SafeVault.Exceptions;
 using SafeVault.Misc;
 using SafeVault.Security;
-using Random = SafeVault.Security.Random;
 
 namespace SafeVault.Client
 {
     internal class SafeVaultWebClient : IDisposable
     {
         private readonly SafeVaultConf _conf;
-        public ICipherCollection<CipherName> Cipher { get; private set; }
 
         public string Utc { get; set; }
 
         public SafeVaultWebClient(SafeVaultConf conf)
         {
             _conf = conf;
-            Cipher = new CipherCollection<CipherName>();
-            Cipher.Add(CipherName.ServerCertificate, new Lazy<ICipher>(() => {
-                var rsa = new RsaEncrypt();
-                rsa.SetCertificate(conf.ServerCertificateName);
-                return rsa;
-            }));
-
-            Cipher.Add(CipherName.ClientCertificate, new Lazy<ICipher>(() => {
-                var rsa = new RsaEncrypt();
-                rsa.SetCertificate(conf.ClientCertificateName);
-                return rsa;
-            }));
-
-            Cipher.Add(CipherName.EncryptMessage, new Lazy<ICipher>(() =>
-            {
-                var cip1 = Cipher[CipherName.RequestPassword];
-                return new CompositeCipher(cip1);
-            }));
-
-            Cipher.Add(CipherName.DecryptMessage, new Lazy<ICipher>(() =>
-            {
-                var cip1 = Cipher[CipherName.RequestPassword];
-                var cip2 = Cipher[CipherName.ResponsePassword];
-                return new CompositeCipher(cip1, cip2);
-            }));
         }
 
         public void Dispose()
         {
-            Cipher.Dispose();
         }
 
         public byte[] Download(string uuid, Action<int> progress = null)
@@ -196,17 +168,20 @@ namespace SafeVault.Client
 
         private SafeVaultWebRequest CreateWebRequest(IDictionary nvc)
         {
-            var requestPwd = Random.Get(32);
-
-            Cipher[CipherName.RequestPassword] = new Lazy<ICipher>(() => 
-            {
-                var aes256 = new Aes256Encrypt();
-                aes256.SetPassPhrase(requestPwd);
-                return aes256;
+            var cipher = new CipherCollection<CipherName>();
+            cipher[CipherName.ServerCertificate] = new Lazy<ICipher>(() => {
+                var rsa = new RsaEncrypt();
+                rsa.SetCertificate(_conf.ServerCertificateName);
+                return rsa;
             });
 
-            var httpRequest = new SafeVaultWebRequest(_conf.ServerUrl, this.Cipher);
-            httpRequest.WriteData(requestPwd, CipherName.ServerCertificate);
+            cipher[CipherName.ClientCertificate] = new Lazy<ICipher>(() => {
+                var rsa = new RsaEncrypt();
+                rsa.SetCertificate(_conf.ClientCertificateName);
+                return rsa;
+            });
+
+            var httpRequest = new SafeVaultWebRequest(_conf.ServerUrl, cipher);
 
             var queryString = string.Join("\n", nvc.Keys.Cast<string>().Select(key => string.Format("{0}={1}", key, nvc[key])).ToArray());
             var data = Encoding.ASCII.GetBytes(queryString);

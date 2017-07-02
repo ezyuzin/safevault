@@ -21,7 +21,9 @@ using System;
 using System.IO;
 using System.Net;
 using SafeVault.Exceptions;
+using SafeVault.Misc;
 using SafeVault.Security;
+using Random = SafeVault.Security.Random;
 
 namespace SafeVault.Client
 {
@@ -33,14 +35,48 @@ namespace SafeVault.Client
         private readonly string _requestUri;
         private SafeVaultWebResponse _response;
 
-        public SafeVaultWebRequest(string requestUri, ICipherCollection<CipherName> cipher)
+        public SafeVaultWebRequest(string requestUri, ICipherCollection<CipherName> ciphers)
         {
             _requestUri = requestUri;
-            Cipher = cipher;
+            Cipher = new CipherCollection<CipherName>();
+            foreach (var key in ciphers.Keys)
+            {
+                Cipher.Add(key, ciphers[key]);   
+            }
+
+            var requestPwd = Random.Get(32);
+            Cipher[CipherName.RequestPassword] = new Lazy<ICipher>(() => 
+            {
+                var aes256 = new Aes256Encrypt();
+                aes256.SetPassPhrase(requestPwd);
+                return aes256;
+            });
+
+            Cipher[CipherName.EncryptMessage] = new Lazy<ICipher>(() =>
+            {
+                var cip1 = Cipher[CipherName.RequestPassword];
+                return new CompositeCipher(cip1);
+            });
+
+            Cipher[CipherName.DecryptMessage] = new Lazy<ICipher>(() =>
+            {
+                var cip1 = Cipher[CipherName.RequestPassword];
+                var cip2 = Cipher[CipherName.ResponsePassword];
+                return new CompositeCipher(cip1, cip2);
+            });
+
+            WriteData(requestPwd, CipherName.ServerCertificate);
+
         }
 
         public void Dispose()
         {
+            if (Cipher != null)
+            {
+                Cipher.Dispose();
+                Cipher = null;
+            }
+
             if (_response != null)
             {
                 _response.Dispose();
