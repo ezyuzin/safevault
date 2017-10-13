@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D80E30D3-02E8-4FF8-98AA-187A71D71869}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SafeVault.Core.UnitTest</RootNamespace>
+    <AssemblyName>SafeVault.Core.UnitTest</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>sign.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Client Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Client Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Client Release|AnyCPU'">
+    <OutputPath>bin\Client Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework, Version=3.8.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.8.1\lib\net35\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Logger\LoggerTest.cs" />
+    <Compile Include="obj\Service Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Service Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Service Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="obj\Service Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Service Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Service Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\Base32Test.cs" />
+    <Compile Include="Security\CipherTest.cs" />
+    <Compile Include="Security\HttpServiceChannelTest.cs" />
+    <Compile Include="Security\SecureStreamTest.cs" />
+    <Compile Include="Security\ServiceChannelTest.cs" />
+    <Compile Include="SendMail\SmtpTest.cs" />
+    <Compile Include="SendMail\WildcardTest.cs" />
+    <Compile Include="Threading\QueueProcessorTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="data\app.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="data\client\test-user\cer.pem">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="data\client\test-user\cer.pem.key">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="data\client\test-user\profile.conf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="data\client\test-user\vault.conf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="data\logger.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="data\server\server.pem">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="data\server\server.pem.key">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="data\smtp.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="data\test.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="obj\Client Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Client Debug\SafeVault.Core35.UnitTest.csproj.CopyComplete" />
+    <None Include="obj\Client Debug\SafeVault.Core35.UnitTest.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Client Debug\SafeVault.Core35.UnitTest.csprojResolveAssemblyReference.cache" />
+    <None Include="obj\Client Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Client Release\SafeVault.Core35.UnitTest.csproj.CopyComplete" />
+    <None Include="obj\Client Release\SafeVault.Core35.UnitTest.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Client Release\SafeVault.Core35.UnitTest.csprojResolveAssemblyReference.cache" />
+    <None Include="obj\Service Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Service Debug\SafeVault.Core.UnitTest.csproj.CopyComplete" />
+    <None Include="obj\Service Debug\SafeVault.Core.UnitTest.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Service Debug\SafeVault.Core.UnitTest.csprojResolveAssemblyReference.cache" />
+    <None Include="obj\Service Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Service Release\SafeVault.Core.UnitTest.csproj.CopyComplete" />
+    <None Include="obj\Service Release\SafeVault.Core.UnitTest.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Service Release\SafeVault.Core.UnitTest.csprojResolveAssemblyReference.cache" />
+    <None Include="packages.config" />
+    <None Include="sign.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SafeVault.Core\SafeVault.Core.35.csproj">
+      <Project>{20cd24b4-caf1-4668-b976-3849f0ae9ad0}</Project>
+      <Name>SafeVault.Core.35</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="obj\Client Debug\SafeVault.Core35.UnitTest.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Client Debug\SafeVault.UnitTest.dll" />
+    <Content Include="obj\Client Debug\SafeVault.UnitTest.pdb" />
+    <Content Include="obj\Client Release\SafeVault.Core35.UnitTest.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Client Release\SafeVault.UnitTest.dll" />
+    <Content Include="obj\Client Release\SafeVault.UnitTest.pdb" />
+    <Content Include="obj\Service Debug\SafeVault.Core.UnitTest.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Service Debug\SafeVault.Core.UnitTest.dll" />
+    <Content Include="obj\Service Debug\SafeVault.Core.UnitTest.pdb" />
+    <Content Include="obj\Service Release\SafeVault.Core.UnitTest.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Service Release\SafeVault.UnitTest.dll" />
+    <Content Include="obj\Service Release\SafeVault.UnitTest.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Client Debug\TempPE\" />
+    <Folder Include="obj\Client Release\TempPE\" />
+    <Folder Include="obj\Service Debug\TempPE\" />
+    <Folder Include="obj\Service Release\TempPE\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

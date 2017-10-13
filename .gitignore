@@ -4,6 +4,8 @@
 .vs/
 bin/
 obj/
+.bak/
+obj_netfx/
 *.pdb
 *.suo
 *.user

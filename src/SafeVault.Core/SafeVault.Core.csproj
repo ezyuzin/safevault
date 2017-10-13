@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>SafeVault</RootNamespace>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>D:\work\vcs\safevault\safevault\client\sign.snk</AssemblyOriginatorKeyFile>
+    <Configurations>Service Debug;Service Release</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Contracts\**" />
+    <Compile Remove="obj_netfx\**" />
+    <Compile Remove="Web\**" />
+    <EmbeddedResource Remove="Contracts\**" />
+    <EmbeddedResource Remove="obj_netfx\**" />
+    <EmbeddedResource Remove="Web\**" />
+    <None Remove="Contracts\**" />
+    <None Remove="obj_netfx\**" />
+    <None Remove="Web\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\sign.snk" Link="sign.snk" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore.Server.Kestrel.Core">
+      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.server.kestrel.core\2.0.0\lib\netstandard2.0\Microsoft.AspNetCore.Server.Kestrel.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\newtonsoft.json\10.0.1\lib\netstandard1.3\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+</Project>

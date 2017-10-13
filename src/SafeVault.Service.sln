@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SafeVault.Web", "SafeVault.Web\SafeVault.Web.csproj", "{96F4C863-EE28-4529-85F4-05DD9B530EFC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SafeVault.Service", "SafeVault.Service\SafeVault.Service.csproj", "{59B0D7BC-8C70-44B7-92EE-808DD6523D95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafeVault.Service.UnitTest", "SafeVault.Service.UnitTest\SafeVault.Service.UnitTest.csproj", "{98A839B4-DA22-4D4D-8BEC-D11FD41F9A42}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SafeVault.Core", "SafeVault.Core\SafeVault.Core.csproj", "{E62A1EC2-E6DF-446D-90A6-A15B5D858A3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SafeVault.Core.UnitTest", "SafeVault.Core.UnitTest\SafeVault.Core.UnitTest.csproj", "{D0C7B207-033D-4F05-A4ED-DF6171A75A72}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Client Debug|Any CPU = Client Debug|Any CPU
+		Client Release|Any CPU = Client Release|Any CPU
+		Service Debug|Any CPU = Service Debug|Any CPU
+		Service Release|Any CPU = Service Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{96F4C863-EE28-4529-85F4-05DD9B530EFC}.Client Debug|Any CPU.ActiveCfg = Service Debug|Any CPU
+		{96F4C863-EE28-4529-85F4-05DD9B530EFC}.Client Release|Any CPU.ActiveCfg = Service Release|Any CPU
+		{96F4C863-EE28-4529-85F4-05DD9B530EFC}.Service Debug|Any CPU.ActiveCfg = Service Debug|Any CPU
+		{96F4C863-EE28-4529-85F4-05DD9B530EFC}.Service Debug|Any CPU.Build.0 = Service Debug|Any CPU
+		{96F4C863-EE28-4529-85F4-05DD9B530EFC}.Service Release|Any CPU.ActiveCfg = Service Release|Any CPU
+		{96F4C863-EE28-4529-85F4-05DD9B530EFC}.Service Release|Any CPU.Build.0 = Service Release|Any CPU
+		{59B0D7BC-8C70-44B7-92EE-808DD6523D95}.Client Debug|Any CPU.ActiveCfg = Service Debug|Any CPU
+		{59B0D7BC-8C70-44B7-92EE-808DD6523D95}.Client Release|Any CPU.ActiveCfg = Service Release|Any CPU
+		{59B0D7BC-8C70-44B7-92EE-808DD6523D95}.Service Debug|Any CPU.ActiveCfg = Service Debug|Any CPU
+		{59B0D7BC-8C70-44B7-92EE-808DD6523D95}.Service Debug|Any CPU.Build.0 = Service Debug|Any CPU
+		{59B0D7BC-8C70-44B7-92EE-808DD6523D95}.Service Release|Any CPU.ActiveCfg = Service Release|Any CPU
+		{59B0D7BC-8C70-44B7-92EE-808DD6523D95}.Service Release|Any CPU.Build.0 = Service Release|Any CPU
+		{98A839B4-DA22-4D4D-8BEC-D11FD41F9A42}.Client Debug|Any CPU.ActiveCfg = Service Debug|Any CPU
+		{98A839B4-DA22-4D4D-8BEC-D11FD41F9A42}.Client Release|Any CPU.ActiveCfg = Service Release|Any CPU
+		{98A839B4-DA22-4D4D-8BEC-D11FD41F9A42}.Service Debug|Any CPU.ActiveCfg = Service Debug|Any CPU
+		{98A839B4-DA22-4D4D-8BEC-D11FD41F9A42}.Service Debug|Any CPU.Build.0 = Service Debug|Any CPU
+		{98A839B4-DA22-4D4D-8BEC-D11FD41F9A42}.Service Release|Any CPU.ActiveCfg = Service Release|Any CPU
+		{98A839B4-DA22-4D4D-8BEC-D11FD41F9A42}.Service Release|Any CPU.Build.0 = Service Release|Any CPU
+		{E62A1EC2-E6DF-446D-90A6-A15B5D858A3C}.Client Debug|Any CPU.ActiveCfg = Service Debug|Any CPU
+		{E62A1EC2-E6DF-446D-90A6-A15B5D858A3C}.Client Release|Any CPU.ActiveCfg = Service Release|Any CPU
+		{E62A1EC2-E6DF-446D-90A6-A15B5D858A3C}.Service Debug|Any CPU.ActiveCfg = Service Debug|Any CPU
+		{E62A1EC2-E6DF-446D-90A6-A15B5D858A3C}.Service Debug|Any CPU.Build.0 = Service Debug|Any CPU
+		{E62A1EC2-E6DF-446D-90A6-A15B5D858A3C}.Service Release|Any CPU.ActiveCfg = Service Release|Any CPU
+		{E62A1EC2-E6DF-446D-90A6-A15B5D858A3C}.Service Release|Any CPU.Build.0 = Service Release|Any CPU
+		{D0C7B207-033D-4F05-A4ED-DF6171A75A72}.Client Debug|Any CPU.ActiveCfg = Service Debug|Any CPU
+		{D0C7B207-033D-4F05-A4ED-DF6171A75A72}.Client Release|Any CPU.ActiveCfg = Service Release|Any CPU
+		{D0C7B207-033D-4F05-A4ED-DF6171A75A72}.Service Debug|Any CPU.ActiveCfg = Service Debug|Any CPU
+		{D0C7B207-033D-4F05-A4ED-DF6171A75A72}.Service Debug|Any CPU.Build.0 = Service Debug|Any CPU
+		{D0C7B207-033D-4F05-A4ED-DF6171A75A72}.Service Release|Any CPU.ActiveCfg = Service Release|Any CPU
+		{D0C7B207-033D-4F05-A4ED-DF6171A75A72}.Service Release|Any CPU.Build.0 = Service Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {66393465-E6E0-4D7D-A652-9CB6C668C7DA}
+	EndGlobalSection
+EndGlobal
